@@ -52,10 +52,42 @@
      <script src="js/jquery.stellar.min.js"></script>
      <!-- Main -->
      <script src="js/main.js"></script>
- 
-
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+		.out{
+			margin: 5px; border-left:1px;
+		}
+	</style>
+
+	<?php
+	session_start();
+	?>
+	
+			
+<div class="row bg-primary bg-opacity-50">
+    <div class="">
+     	<div>
+		  			<?php
+
+                            if(isset($_SESSION['khachhang']['ten_nd'])){
+                                    $ten_nd=$_SESSION['khachhang']['ten_nd'];
+                            ?>
+                                    
+							 <a href="./index.php" class=" p-2 text-light "><i class="fa fa-user p-1"></i><?php echo $ten_nd; ?></a>
+							 <a  href="./logout.php" class=" p-2 text-white"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+							 
+                            <?php
+                                }else{
+                            ?>
+                            <?php 
+                                }
+                            ?>
+          </div>     
+		<div> </div>       
+	</div>
+</div>		
+
         <nav class="colorlib-nav" role="navigation" >
 			<div class="top-menu" >
 				<div class="container">
@@ -77,12 +109,12 @@
 													<div class="owl-carousel2">
 														<div class="item">
 															<div class="col">
-																<h3><a href="./admin/page-login.php">Đăng nhập</a></h3>
+																<h3><a href="./login.php">Đăng nhập</a></h3>
 															</div>
 														</div>
 														<div class="item">
 															<div class="col">
-																<h3><a href="./admin/page-register.php">Đăng kí </a></h3>
+																<h3><a href="./signup.php">Đăng kí </a></h3>
 															</div>
 														</div>
 														<div class="item">

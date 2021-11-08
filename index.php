@@ -37,10 +37,9 @@
 
 	</head>
 	<body>
-		
-	<div class="colorlib-loader"></div>
 
-	<div id="page">
+	
+
 		<?php
 		require('./header.php');
 		?>
@@ -48,6 +47,8 @@
 		require('./config.php');
 		$products =mysqli_query($conn, "SELECT *FROM `sanpham` ");
 		?>
+
+			
 
 		<aside id="colorlib-hero">
 			<div class="flexslider">

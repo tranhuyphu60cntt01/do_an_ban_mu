@@ -71,7 +71,7 @@
 							<div class="desc">
 								
 								<h2><a href="chitietsp.php?id_sp=<?=$row['id_sp']?>"><?=$row['ten_sp']?></a></h2>
-								<span class="price"><?=$row['gia']?></span>
+								<span class="price"><?=$row['gia']?> đồng</span>
 							</div>
 						</div>
 					</div>
