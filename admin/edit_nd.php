@@ -23,8 +23,16 @@
         require '../config.php';
         $error=false;
         if(isset($_GET['action']) && $_GET['action'] == "edit"){
-          if(isset($_POST['id_nd']) && !empty($_POST['id_nd']) &&  isset($_POST['ten_nd']) && !empty($_POST['ten_nd'])&&  isset($_POST['sdt_nd']) && !empty($_POST['sdt_nd']) &&  isset($_POST['gmail']) && !empty($_POST['gmail']) &&  isset($_POST['gioitinh']) && !empty($_POST['gioitinh']) &&  isset($_POST['id_lnd']) && !empty($_POST['id_lnd'])){
-            $result= mysqli_query($conn,"UPDATE `nguoidung` SET `ten_nd` = '".$_POST['ten_nd']."', `sdt_nd`= '".$_POST['sdt_nd']."', `gmail`= '".$_POST['gmail']."' , `gioitinh`= '".$_POST['gioitinh']."' , `id_lnd`= '".$_POST['id_lnd']."'  WHERE `nguoidung`.`id_nd`=".$_POST['id_nd'].";");
+          if(isset($_POST['id_nd']) && !empty($_POST['id_nd']) &&  
+          isset($_POST['ten_nd']) && !empty($_POST['ten_nd'])&&  
+          isset($_POST['sdt_nd']) && !empty($_POST['sdt_nd']) &&  
+          isset($_POST['gmail']) && !empty($_POST['gmail']) &&  
+          isset($_POST['pass']) && !empty($_POST['pass']) &&  
+          isset($_POST['id_lnd']) && !empty($_POST['id_lnd'])){
+            $result= mysqli_query($conn,"UPDATE `nguoidung` SET `ten_nd` = '".$_POST['ten_nd']."', 
+            `sdt_nd`= '".$_POST['sdt_nd']."', `gmail`= '".$_POST['gmail']."' , 
+            `pass`= '".$_POST['pass']."' , `id_lnd`= '".$_POST['id_lnd']."'  
+            WHERE `nguoidung`.`id_nd`=".$_POST['id_nd'].";");
             if(!$result){
               $error =" Không thể cập nhật tài khoản";
             }
@@ -76,8 +84,8 @@
                       value="<?= $nguoidung['sdt_nd']?>"><br>
                     <br>Gmail<br> <input type="text" name="gmail"
                       value="<?= $nguoidung['gmail']?>"><br>
-                    <br>Giới tính<br> <input type="text" name="gioitinh"
-                      value="<?= $nguoidung['gioitinh']?>"><br>
+                    <br> Password<br> <input type="password" name="pass"
+                      value="<?= $nguoidung['pass']?>"><br>
                     <br>Loại người dùng <br>
                     <select name="id_lnd" id="">
                       <option <?php if(!empty($nguoidung['ten_lnd'])) {?> selected

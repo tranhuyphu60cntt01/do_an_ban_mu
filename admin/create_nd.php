@@ -12,14 +12,14 @@
          if(isset($_POST['ten_nd']) && !empty($_POST['ten_nd']) && 
          isset($_POST['sdt_nd']) && !empty($_POST['sdt_nd']) && 
          isset($_POST['gmail']) && !empty($_POST['gmail'])  &&
-         isset($_POST['gioitinh']) && !empty($_POST['gioitinh']) && 
+         isset($_POST['pass']) && !empty($_POST['pass']) && 
          isset($_POST['id_lnd']) && !empty($_POST['id_lnd']) 
          ){
-           $sql="INSERT INTO nguoidung (`ten_nd`,`sdt_nd`,`gmail`,`gioitinh`,`id_lnd`) 
+           $sql="INSERT INTO nguoidung (`ten_nd`,`sdt_nd`,`gmail`,`pass`,`id_lnd`) 
            VALUE ('".$_POST['ten_nd']."'
            ,'".$_POST['sdt_nd']."'
            ,'".$_POST['gmail']."'
-           ,'".$_POST['gioitinh']."'
+           ,'".$_POST['pass']."'
            ,'".$_POST['id_lnd']."')";
 
              $result= mysqli_query($conn,$sql);
@@ -65,8 +65,8 @@
                                               <input type="text" name="sdt_nd" value=""><br>
                                               <label> Gmail</label><br>
                                               <input type="text" name="gmail" value=""><br>
-                                              <label> Giới tính</label><br>
-                                              <input type="text" name="gioitinh" value=""><br>
+                                              <label> password</label><br>
+                                              <input type="password" name="pass" value=""><br>
                                               <label> Loại ngừời dùng</label><br>
                                               <select name="id_lnd" id="">
                                               <option value="1">Admin

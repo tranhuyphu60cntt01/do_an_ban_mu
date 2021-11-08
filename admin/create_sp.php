@@ -10,18 +10,27 @@
      $error=false;
      if(isset($_GET['action']) && $_GET['action']=='create'){ 
          if(isset($_POST['ten_sp']) && !empty($_POST['ten_sp']) && 
-         isset($_POST['sdt_sp']) && !empty($_POST['sdt_sp']) && 
-         isset($_POST['gmail']) && !empty($_POST['gmail'])  &&
-         isset($_POST['gioitinh']) && !empty($_POST['gioitinh']) && 
+         isset($_POST['gia']) && !empty($_POST['gia']) && 
+         isset($_FILES['anh']) && !empty($_FILES['anh']) &&
+         isset($_POST['soluong']) && !empty($_POST['soluong']) && 
+         isset($_POST['mo_ta']) && !empty($_POST['mo_ta']) &&
          isset($_POST['id_lsp']) && !empty($_POST['id_lsp']) 
-         ){
-           $sql="INSERT INTO nguoidung (`ten_sp`,`sdt_sp`,`gmail`,`gioitinh`,`id_lsp`) 
-           VALUE ('".$_POST['ten_sp']."'
-           ,'".$_POST['sdt_sp']."'
-           ,'".$_POST['gmail']."'
-           ,'".$_POST['gioitinh']."'
-           ,'".$_POST['id_lsp']."')";
 
+         ){
+            require '../config.php';
+            $anh=$_FILES['anh']['name'];
+            $chenanh = "images/".$anh;
+           $sql="INSERT INTO sanpham (`ten_sp`,`gia`,`anh`,`soluong`,`mo_ta`,`id_lsp`) 
+
+           VALUE ('".$_POST['ten_sp']."'
+           ,'".$_POST['gia']."'
+           ,'$chenanh'
+           ,'".$_POST['soluong']."'
+           ,'".$_POST['mo_ta']."'
+           ,'".$_POST['id_lsp']."')";
+           
+           move_uploaded_file($_FILES['anh']['tmp_name'],"../images/".$anh);
+           
              $result= mysqli_query($conn,$sql);
              
              if(!$result){
@@ -39,8 +48,8 @@
                  </div>
                  <?php } else {?>
                      <div>
-                     <h4 align="center"> tạo người dùng <?=$_POST['ten_sp']?> thành công</h4>
-                     <a href="./admin.php">Danh sách nhà cung cấp</a>
+                     <h4 align="center"> Thêm sản phẩm <?=$_POST['ten_sp']?> thành công</h4>
+                     <a href="./admin_sp.php">Danh sách sản phẩm</a>
                      </div>
                  <?php }?>
                  <?php }?>
@@ -58,21 +67,29 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example" class="display" style="min-width: 845px">
-                                    <form action="./create_sp.php?action=create" method="post">
-                                            <label> Tên</label><br>
+                                    <form action="./create_sp.php?action=create" method="post" enctype = "multipart/form-data">
+                                            <label> Tên sản phẩm</label><br>
                                             <input type="text" name="ten_sp" value=""><br>
-                                            <label> Số điện thoại</label><br>
-                                              <input type="text" name="sdt_sp" value=""><br>
-                                              <label> Gmail</label><br>
-                                              <input type="text" name="gmail" value=""><br>
-                                              <label> Giới tính</label><br>
-                                              <input type="text" name="gioitinh" value=""><br>
-                                              <label> Loại ngừời dùng</label><br>
+                                            <label> Giá</label><br>
+                                              <input type="text" name="gia" value=""><br>
+                                              <label> Ảnh sản phẩm</label><br>
+                                                <div class="wrap-field">
+                                                <div class="right-wrap-field">
+                                                    <input width="50px;" type="file" name="anh"/>
+                                                </div>
+                                                <br>
+                                                </div>
+                                              <label> Số lượng</label><br>
+                                              <input type="text" name="soluong" value=""><br>
+                                              <label> Mô tả</label><br>
+                                              <input type="text" name="mo_ta" value=""><br>
+                                              <label> Loại sản phẩm</label><br>
                                               <select name="id_lsp" id="">
-                                              <option value="1">Admin
-                                              </option>
-                                              <option value="2">Khách hàng
-                                              </option>
+                                              <option value="1">Mũ lưỡi trai</option>
+                                              <option value="2"> Mũ len </option>
+                                              <option value="3">Mũ tai bèo </option>
+                                              <option value="4">Mũ bảo hiểm</option>
+                                              <option value="5">Mũ cao bồi </option>
 
                                               </select><br>
                                               <br>
